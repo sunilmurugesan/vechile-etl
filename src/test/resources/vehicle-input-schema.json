@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "properties": {
+    "category": {
+      "default": "CAR",
+      "description": "Vehicle category - CAR, VAN, MOTORBIKE",
+      "title": "Category",
+      "type": "string"
+    },
+    "make": {
+      "description": "Make of the Car",
+      "title": "Make",
+      "type": "string"
+    },
+    "model": {
+      "description": "Model of the Car",
+      "title": "Model",
+      "type": "string"
+    },
+    "mileage": {
+      "description": "Mileage of the Car",
+      "title": "Mileage",
+      "type": "integer"
+    },
+    "year": {
+      "description": "Year of the Make",
+      "title": "Year",
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "category",
+    "make",
+    "model",
+    "year"
+  ],
+  "type": "object"
+}

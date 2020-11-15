@@ -31,9 +31,9 @@ public class VehicleRouteBuilderTest extends CamelTestSupport {
     }
 
     @Test
-    public void testOrdersCanBeTransformedAndRoutedToGivenDestination() throws Exception {
+    public void testVehicleDataCanBeValidatedAndRouted() throws Exception {
         resultEndpoint.expectedMessageCount(1);
-        template.sendBody(new VehicleData());
+        template.sendBody(VehicleData.builder().category("CAR").make("BMW").model("5 Series").year(2019).build());
         // Assert Expectation
         getMockEndpoint(MOCK_OUTPUT).assertIsSatisfied();
     }

@@ -16,6 +16,7 @@ public class VehicleRouteBuilder extends RouteBuilder {
     public void configure() {
         from("direct:start")
                 .marshal().json(JsonLibrary.Jackson)
+                .to("json-validator:vehicle-input-schema.json")
                 .to("log:output");
     }
 }

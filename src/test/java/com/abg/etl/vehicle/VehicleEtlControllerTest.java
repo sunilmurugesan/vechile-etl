@@ -50,11 +50,7 @@ public class VehicleEtlControllerTest {
     }
 
     public VehicleData vehicleData() {
-        VehicleData data = new VehicleData();
-        data.setCategory("CAR");
-        data.setMake("BMW");
-        data.setModel("5 Series");
-        return data;
+        return VehicleData.builder().category("CAR").make("BMW").model("5 Series").year(2019).build();
     }
 
     public static String asJson(final VehicleData obj) {
