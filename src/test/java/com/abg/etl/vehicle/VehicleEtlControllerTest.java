@@ -38,15 +38,22 @@ public class VehicleEtlControllerTest {
                 .post(url)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(asJson(vehicleData())))
+                .content(asJson(VehicleData.builder().category("CAR").make("BMW").model("5 Series").year(2019).build())))
                 .andExpect(status().isOk());
     }
 
-    public VehicleData vehicleData() {
-        return VehicleData.builder().category("CAR").make("BMW").model("5 Series").year(2019).build();
+    @Test
+    public void stopLoadVehicleDataWhenValidationFail() throws Exception {
+        String url = "/vehicle/load";
+        VehicleData invalidData = VehicleData.builder().make("BMW").build();
+        mockMvc.perform(MockMvcRequestBuilders
+                .post(url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(asJson(invalidData)))
+                .andExpect(status().isBadRequest());
     }
-
-
+    
     public static String asJson(final VehicleData obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
